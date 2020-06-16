@@ -1,0 +1,32 @@
+{
+  "name": "async-examples",
+  "version": "1.0.0",
+  "description": "Promise to asyn examples",
+  "main": "src/before/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaxscape/async-examples.git"
+  },
+  "keywords": [
+    "promise",
+    "async",
+    "node",
+    "examples"
+  ],
+  "author": "Ben Surgison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajaxscape/async-examples/issues"
+  },
+  "homepage": "https://github.com/ajaxscape/async-examples#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
+  }
+}
