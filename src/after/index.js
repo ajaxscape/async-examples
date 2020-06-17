@@ -1,6 +1,5 @@
 const express = require('express')
-const axios = require('axios')
-const SPACEX_URL = 'https://api.spacexdata.com/v3'
+const { getLaunches, getShip } = require('../helpers/spaceX')
 
 const app = express()
 
@@ -13,17 +12,15 @@ const buildLaunchStats = data => {
     return ships
   }, {})
   return Promise.all(Object.entries(ships).map(async ([shipId, ship]) => {
-    const url = `${SPACEX_URL}/ships/${shipId}`
-    console.log(`GET: ${url}`)
-    const response = await axios.get(url)
-    return { ...response.data, ...ship }
+    const { ship_name: shipName } = await getShip(shipId)
+    return { shipName, ...ship }
   }))
 }
 
 app.get('/', async (req, res) => {
   try {
-    const response = await axios.get(`${SPACEX_URL}/launches`)
-    const launchStats = await buildLaunchStats(response.data)
+    const launchData = await getLaunches()
+    const launchStats = await buildLaunchStats(launchData)
     return res.send(launchStats)
   } catch (err) {
     console.log(err)
