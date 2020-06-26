@@ -1,6 +1,6 @@
 const express = require('express')
-const app = express()
-const { getLaunches, getShip } = require('../helpers/spaceX')
+const router = express.Router()
+const { getLaunches, getShip } = require('../../helpers/spaceX')
 
 function buildLaunchStats (data) {
   const ships = data.reduce(function (ships, launch) {
@@ -18,7 +18,7 @@ function buildLaunchStats (data) {
   }))
 }
 
-app.get('/', function (req, res) {
+router.get('/', function (req, res) {
   return getLaunches()
     .then(function (launchData) {
       return buildLaunchStats(launchData)
@@ -32,6 +32,4 @@ app.get('/', function (req, res) {
     })
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+module.exports = router

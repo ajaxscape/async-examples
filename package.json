@@ -2,9 +2,9 @@
   "name": "async-examples",
   "version": "1.0.0",
   "description": "Promise to asyn examples",
-  "main": "src/before/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "nodemon": "^2.0.4",
     "standard": "^14.3.4"
   }
 }

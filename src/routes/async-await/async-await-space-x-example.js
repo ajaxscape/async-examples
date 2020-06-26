@@ -1,7 +1,6 @@
 const express = require('express')
-const { getLaunches, getShip } = require('../helpers/spaceX')
-
-const app = express()
+const router = express.Router()
+const { getLaunches, getShip } = require('../../helpers/spaceX')
 
 const buildLaunchStats = data => {
   const ships = data.reduce((ships, launch) => {
@@ -13,11 +12,11 @@ const buildLaunchStats = data => {
   }, {})
   return Promise.all(Object.entries(ships).map(async ([shipId, ship]) => {
     const { ship_name: shipName } = await getShip(shipId)
-    return { shipName, ...ship }
+    return { ...ship, shipName }
   }))
 }
 
-app.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const launchData = await getLaunches()
     const launchStats = await buildLaunchStats(launchData)
@@ -28,6 +27,4 @@ app.get('/', async (req, res) => {
   }
 })
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!')
-})
+module.exports = router
