@@ -2,11 +2,9 @@ const express = require('express')
 const router = express.Router()
 const { getPeople } = require('../../helpers/data')
 
-function getPeopleByAgeCategory (people, config) {
-  const peopleInCategory = people.filter((person) => person.age >= config.ageRange[0] && person.age <= config.ageRange[1])
+function getPeopleByAgeCategory (people, lowerAgeLimit, upperAgeLimit) {
   return {
-    type: config.category,
-    people: peopleInCategory
+    people: people.filter((person) => person.age >= lowerAgeLimit && person.age <= upperAgeLimit)
   }
 }
 
