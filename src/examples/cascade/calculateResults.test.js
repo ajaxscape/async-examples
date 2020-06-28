@@ -1,4 +1,4 @@
-const { expect } = require('@jest/globals')
+const { describe, test, expect } = require('@jest/globals')
 
 const { calculateResults: calculateResultsWithPromises } = require('./promises/calc-results')
 const { calculateResults: calculateResultsWithStackedPromises } = require('./stacked-promises/calc-results')

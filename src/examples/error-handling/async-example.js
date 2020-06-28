@@ -7,8 +7,9 @@ const getData = async (error) => {
     const data = JSON.parse(result)
     console.log(data)
     return data
-  } catch (e) {
-    console.log(e)
+  } catch (err) {
+    console.log(err)
+    throw err
   }
 }
 
