@@ -29,6 +29,6 @@ const myRequest = (error) => {
   }
 }
 
-myRequest('none')
+// myRequest('none')
 // myRequest('sync')
-// myRequest('async')
+myRequest('async')
