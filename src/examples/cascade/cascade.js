@@ -27,6 +27,20 @@ const calculate = (val) => {
     })
 }
 
+const calculateResults = () => {
+  return Promise.all([
+    calculate(10),
+    calculate(20),
+    calculate(30)
+  ]).then((totals) => {
+    return {
+      low: totals[0],
+      medium: totals[1],
+      high: totals[2]
+    }
+  })
+}
+
 const calculateAll = () => {
   console.log('******* Calculating *******')
   return Promise.all([
@@ -45,3 +59,6 @@ const calculateAll = () => {
 
 calculateAll()
   .then((result) => console.log(`The result is ${result}`))
+
+calculateResults()
+  .then((results) => console.log(`My results: ${JSON.stringify(results)}`))
