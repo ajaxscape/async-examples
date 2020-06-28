@@ -1,13 +1,8 @@
 const people = require('./people.json')
-
-async function wait (ms) {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms)
-  })
-}
+const { pause } = require('./utils')
 
 async function getPeople () {
-  await wait(1000)
+  await pause(1000)
   return people
 }
 
