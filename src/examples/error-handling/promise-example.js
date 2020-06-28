@@ -1,24 +1,13 @@
+const { getJSON } = require('./data')
 
-const data = {
-  givenName: 'Ben',
-  familyName: 'Surgison'
-}
-
-const getJSON = (error) => {
-  switch (error) {
-    case 'none': return Promise.resolve(JSON.stringify(data))
-    case 'async': return Promise.resolve('*')
-    case 'sync': throw new Error('Sync Error')
-  }
-}
-
-const myRequest = (error) => {
+const getData = (error) => {
   try {
-    getJSON(error)
+    return getJSON(error)
       .then(result => {
         // this parse may fail
         const data = JSON.parse(result)
         console.log(data)
+        return data
       })
       //  handle asynchronous errors
       .catch((err) => {
@@ -29,6 +18,4 @@ const myRequest = (error) => {
   }
 }
 
-// myRequest('none')
-// myRequest('sync')
-myRequest('async')
+module.exports = { getData }

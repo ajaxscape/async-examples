@@ -4,7 +4,8 @@
   "description": "Promise to asyn examples",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index"
+    "start": "nodemon index",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,11 +23,20 @@
     "url": "https://github.com/ajaxscape/async-examples/issues"
   },
   "homepage": "https://github.com/ajaxscape/async-examples#readme",
+  "standard": {
+    "globals": [
+      "describe",
+      "test",
+      "expect"
+    ]
+  },
   "dependencies": {
+    "@jest/globals": "^26.1.0",
     "axios": "^0.19.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "jest": "^26.1.0",
     "nodemon": "^2.0.4",
     "standard": "^14.3.4"
   }

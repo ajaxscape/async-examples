@@ -7,9 +7,5 @@ module.exports.calculateTotal = () => {
     calculate(30),
     calculate(40),
     calculate(50)
-  ]).then((totals) => {
-    return totals.reduce((runningTotal, currentTotal) => {
-      return runningTotal + currentTotal
-    }, 0)
-  })
+  ]).then((totals) => totals.reduce((runningTotal, currentTotal) => runningTotal + currentTotal, 0))
 }

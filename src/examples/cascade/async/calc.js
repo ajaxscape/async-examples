@@ -1,4 +1,4 @@
-const { add, subtract } = require('../../operators')
+const { add, subtract } = require('../operators')
 
 module.exports.calculate = async (val) => {
   const valA = await add(val, 10)

@@ -1,4 +1,4 @@
-const { add, subtract } = require('../../operators')
+const { add, subtract } = require('../operators')
 
 module.exports.calculate = (val) => {
   return add(val, 10)
