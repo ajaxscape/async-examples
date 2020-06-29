@@ -12,7 +12,7 @@ const data = [
     partnerId: 1
   },
   {
-    id: 4,
+    id: 3,
     givenName: 'Karen',
     familyName: 'Davis'
   }
@@ -24,7 +24,7 @@ const SYNC_ERROR = 'sync'
 
 const getJSON = (error) => {
   switch (error) {
-    case NO_ERROR: return Promise.resolve(JSON.stringify({ ...data }))
+    case NO_ERROR: return Promise.resolve(JSON.stringify([...data]))
     case ASYNC_ERROR: return Promise.resolve('*')
     case SYNC_ERROR: throw new Error('Sync Error')
   }
@@ -35,7 +35,7 @@ const getPartner = ({ partnerId }) => Promise.resolve(data.find(({ id }) => id =
 const hasPartner = ({ partnerId }) => partnerId !== undefined
 
 module.exports = {
-  expectedData: { ...data },
+  expectedData: [...data],
   getJSON,
   getPerson,
   getPartner,

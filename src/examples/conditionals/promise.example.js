@@ -1,6 +1,6 @@
 const { getPerson, getPartner, hasPartner } = require('../data')
 
-module.exports.getApplicants = (id) => {
+module.exports.getApplicant = (id) => {
   return getPerson(id)
     .then((person) => {
       if (hasPartner(person)) {
@@ -12,7 +12,7 @@ module.exports.getApplicants = (id) => {
           })
       } else {
         console.log(person)
-        return [person]
+        return person
       }
     })
 }
