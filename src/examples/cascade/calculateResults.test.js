@@ -5,23 +5,23 @@ const { calculateResults: calculateResultsWithStackedPromises } = require('./sta
 const { calculateResults: calculateResultsWithAsync } = require('./async/calc-results')
 
 const expectedResults = {
-  high: 995,
-  low: 5,
-  medium: 95
+  high: 955,
+  low: -35,
+  medium: 55
 }
 
 const args = [10, 100, 1000]
 
 describe('Calculate results with:', () => {
   test('Nested promises', () => {
-    expect(calculateResultsWithPromises(...args)).resolves.toStrictEqual(expectedResults)
+    return expect(calculateResultsWithPromises(...args)).resolves.toStrictEqual(expectedResults)
   })
 
   test('Stacked promises', () => {
-    expect(calculateResultsWithStackedPromises(...args)).resolves.toStrictEqual(expectedResults)
+    return expect(calculateResultsWithStackedPromises(...args)).resolves.toStrictEqual(expectedResults)
   })
 
   test('Async/await', () => {
-    expect(calculateResultsWithAsync(...args)).resolves.toStrictEqual(expectedResults)
+    return expect(calculateResultsWithAsync(...args)).resolves.toStrictEqual(expectedResults)
   })
 })

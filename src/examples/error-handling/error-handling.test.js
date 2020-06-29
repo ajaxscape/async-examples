@@ -7,11 +7,11 @@ const { getData: getDataWithAsync } = require('./async-example')
 
 describe('Get data should pass using:', () => {
   test('Promises', () => {
-    expect(getDataWithPromises(NO_ERROR)).resolves.toStrictEqual(expectedData)
+    return expect(getDataWithPromises(NO_ERROR)).resolves.toStrictEqual(expectedData)
   })
 
   test('Async/await', () => {
-    expect(getDataWithAsync(NO_ERROR)).resolves.toStrictEqual(expectedData)
+    return expect(getDataWithAsync(NO_ERROR)).resolves.toStrictEqual(expectedData)
   })
 })
 
