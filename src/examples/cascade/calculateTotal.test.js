@@ -7,15 +7,15 @@ const { calculateTotal: calculateTotalWithAsync } = require('./async/calc-total'
 const expectedTotal = -75
 
 describe('Calculate total with:', () => {
-  test('Nested promises', () => {
-    return expect(calculateTotalWithPromises()).resolves.toStrictEqual(expectedTotal)
+  test('Nested promises', async () => {
+    await expect(calculateTotalWithPromises()).resolves.toStrictEqual(expectedTotal)
   })
 
-  test('Stacked promises', () => {
-    return expect(calculateTotalWithStackedPromises()).resolves.toStrictEqual(expectedTotal)
+  test('Stacked promises', async () => {
+    await expect(calculateTotalWithStackedPromises()).resolves.toStrictEqual(expectedTotal)
   })
 
-  test('Async/await', () => {
-    return expect(calculateTotalWithAsync()).resolves.toStrictEqual(expectedTotal)
+  test('Async/await', async () => {
+    await expect(calculateTotalWithAsync()).resolves.toStrictEqual(expectedTotal)
   })
 })

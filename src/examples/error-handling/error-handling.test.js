@@ -6,12 +6,12 @@ const { getData: getDataWithPromises } = require('./promise-example')
 const { getData: getDataWithAsync } = require('./async-example')
 
 describe('Get data should pass using:', () => {
-  test('Promises', () => {
-    return expect(getDataWithPromises(NO_ERROR)).resolves.toStrictEqual(expectedData)
+  test('Promises', async () => {
+    await expect(getDataWithPromises(NO_ERROR)).resolves.toStrictEqual(expectedData)
   })
 
-  test('Async/await', () => {
-    return expect(getDataWithAsync(NO_ERROR)).resolves.toStrictEqual(expectedData)
+  test('Async/await', async () => {
+    await expect(getDataWithAsync(NO_ERROR)).resolves.toStrictEqual(expectedData)
   })
 })
 

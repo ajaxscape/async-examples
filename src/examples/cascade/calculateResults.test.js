@@ -13,15 +13,15 @@ const expectedResults = {
 const args = [10, 100, 1000]
 
 describe('Calculate results with:', () => {
-  test('Nested promises', () => {
-    return expect(calculateResultsWithPromises(...args)).resolves.toStrictEqual(expectedResults)
+  test('Nested promises', async () => {
+    await expect(calculateResultsWithPromises(...args)).resolves.toStrictEqual(expectedResults)
   })
 
-  test('Stacked promises', () => {
-    return expect(calculateResultsWithStackedPromises(...args)).resolves.toStrictEqual(expectedResults)
+  test('Stacked promises', async () => {
+    await expect(calculateResultsWithStackedPromises(...args)).resolves.toStrictEqual(expectedResults)
   })
 
-  test('Async/await', () => {
-    return expect(calculateResultsWithAsync(...args)).resolves.toStrictEqual(expectedResults)
+  test('Async/await', async () => {
+    await expect(calculateResultsWithAsync(...args)).resolves.toStrictEqual(expectedResults)
   })
 })
