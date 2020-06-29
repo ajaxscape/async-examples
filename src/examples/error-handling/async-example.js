@@ -1,4 +1,4 @@
-const { getJSON } = require('./data')
+const { getJSON } = require('../data')
 
 const getData = async (error) => {
   try {

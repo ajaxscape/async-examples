@@ -1,6 +1,6 @@
 const { describe, test, expect } = require('@jest/globals')
 
-const { expectedData, NO_ERROR, SYNC_ERROR, ASYNC_ERROR } = require('./data')
+const { expectedData, NO_ERROR, SYNC_ERROR, ASYNC_ERROR } = require('../data')
 
 const { getData: getDataWithPromises } = require('./promise-example')
 const { getData: getDataWithAsync } = require('./async-example')
