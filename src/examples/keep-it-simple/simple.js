@@ -2,8 +2,6 @@ const { pipeLineFunc } = require('./helper')
 
 const pipeLine = [pipeLineFunc, pipeLineFunc, pipeLineFunc, pipeLineFunc]
 
-console.log(pipeLine.shift())
-
 const amendments = [
   { type: 'a', adjustment: 10 },
   { type: 'c', adjustment: -5 }
