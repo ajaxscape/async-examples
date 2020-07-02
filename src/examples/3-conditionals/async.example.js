@@ -1,6 +1,6 @@
 const { getPerson, getPartner, hasPartner } = require('../data')
 
-module.exports.getApplicant = async (id) => {
+const getApplicant = async (id) => {
   const person = await getPerson(id)
   if (hasPartner(person)) {
     const partner = await getPartner(person)
@@ -11,4 +11,8 @@ module.exports.getApplicant = async (id) => {
     console.log(person)
     return person
   }
+}
+
+module.exports = {
+  getApplicant
 }

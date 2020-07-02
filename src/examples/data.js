@@ -22,16 +22,16 @@ const NO_ERROR = 'none'
 const ASYNC_ERROR = 'async'
 const SYNC_ERROR = 'sync'
 
-const getJSON = (error) => {
+const getJSON = async (error) => {
   switch (error) {
-    case NO_ERROR: return Promise.resolve(JSON.stringify([...data]))
-    case ASYNC_ERROR: return Promise.resolve('*')
+    case NO_ERROR: return JSON.stringify([...data])
+    case ASYNC_ERROR: return '*'
     case SYNC_ERROR: throw new Error('Sync Error')
   }
 }
 
-const getPerson = (personId) => Promise.resolve(data.find(({ id }) => id === personId))
-const getPartner = ({ partnerId }) => Promise.resolve(data.find(({ id }) => id === partnerId))
+const getPerson = async (personId) => data.find(({ id }) => id === personId)
+const getPartner = async ({ partnerId }) => data.find(({ id }) => id === partnerId)
 const hasPartner = ({ partnerId }) => partnerId !== undefined
 
 module.exports = {

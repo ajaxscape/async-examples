@@ -4,13 +4,9 @@ const reportMessageWithPromises = async () => {
   const message = []
   console.log('Message start:')
 
-  let word
-  do {
-    word = await getNextWord()
-    if (word) {
-      message.push(word)
-    }
-  } while (word)
+  for (let word = ''; word !== undefined; word = await getNextWord()) {
+    message.push(word)
+  }
 
   console.log('Message complete:')
   console.log()

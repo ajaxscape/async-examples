@@ -3,7 +3,7 @@ const report = async (message) => {
 }
 
 module.exports.pipeLineFunc = async (transactions, amendments) => {
-  const amendedTransactions = await Promise.all(transactions.map(async ({ val, type }) => {
+  return Promise.all(transactions.map(async ({ val, type }) => {
     const amendment = amendments.find(({ type: transType }) => transType === type)
     if (amendment) {
       const prevVal = val
@@ -11,8 +11,6 @@ module.exports.pipeLineFunc = async (transactions, amendments) => {
       await report(`Adjusted transaction type: "${type}" from ${prevVal} to ${val}`)
     }
 
-    return { val, type }
+    return { val, type, status: 'amended' }
   }))
-
-  return Promise.all(amendedTransactions.map(async (transaction) => ({ ...transaction, status: 'amended' })))
 }

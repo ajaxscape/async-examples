@@ -2,6 +2,8 @@ const pause = async ms => new Promise(resolve => {
   setTimeout(resolve, ms)
 })
 
+const randomNumber = async (max = 6) => pause().then(() => Promise.resolve(Math.ceil(Math.random() * 6)))
+
 const set = val => {
   console.log(`Starting with ${val}`)
   return Promise.resolve(val)
@@ -26,6 +28,7 @@ const print = () => async function (total) {
 
 module.exports = {
   pause,
+  randomNumber,
   set,
   add,
   subtract,

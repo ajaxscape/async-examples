@@ -8,13 +8,12 @@ const amendments = [
 ]
 
 const calculate = (transactions, amendments) => {
-  const initialPromise = pipeLine.reduce((transactionsPromise, pipeLineFunction) => {
+  return pipeLine.reduce((transactionsPromise, pipeLineFunction) => {
     return transactionsPromise
       .then((trans) => {
         return pipeLineFunction(trans, amendments)
       })
-  }, Promise.resolve([...transactions]))
-  return initialPromise
+  }, Promise.resolve(transactions))
     .then((initialAmendedTrans) => {
       return Promise.resolve(initialAmendedTrans.map((trans) => {
         return { ...trans, complete: true }

@@ -10,7 +10,7 @@ const amendments = [
 const calculate = async (transactions, amendments) => {
   transactions = await pipeLine.reduce(async (transactionsPromise, pipeLineFunction) => {
     return pipeLineFunction(await transactionsPromise, amendments)
-  }, Promise.resolve([...transactions]))
+  }, Promise.resolve(transactions))
 
   return transactions.map((trans) => ({ ...trans, complete: true }))
 }
