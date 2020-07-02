@@ -1,6 +1,6 @@
 const { getNextWord } = require('../utils')
 
-const reportMessageWithPromises = () => {
+const getMessage = () => {
   console.log('Message start:')
 
   const processMessage = (message = []) => {
@@ -15,13 +15,12 @@ const reportMessageWithPromises = () => {
       })
   }
 
-  processMessage()
-    .then((message) => {
-      console.log('Message complete:')
-      console.log()
-      console.log('Message received is as follows:')
-      console.log(message.join(' '))
-    })
+  return processMessage()
 }
 
-reportMessageWithPromises()
+getMessage().then(message => {
+  console.log('Message complete:')
+  console.log()
+  console.log('Message received is as follows:')
+  console.log(message.join(' '))
+})

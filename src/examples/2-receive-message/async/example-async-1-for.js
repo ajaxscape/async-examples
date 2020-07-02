@@ -1,6 +1,6 @@
 const { getNextWord } = require('../utils')
 
-const reportMessageWithPromises = async () => {
+const getMessage = async () => {
   const message = []
   console.log('Message start:')
 
@@ -8,10 +8,12 @@ const reportMessageWithPromises = async () => {
     message.push(word)
   }
 
+  return message
+}
+
+getMessage().then(message => {
   console.log('Message complete:')
   console.log()
   console.log('Message received is as follows:')
   console.log(message.join(' '))
-}
-
-reportMessageWithPromises()
+})
