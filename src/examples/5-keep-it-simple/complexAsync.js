@@ -15,11 +15,14 @@ const calculate = async (transactions, amendments) => {
   return transactions.map((trans) => ({ ...trans, complete: true }))
 }
 
-calculate([
+const transactions = [
   { type: 'a', val: 1 },
   { type: 'b', val: 2 },
   { type: 'c', val: 3 },
   { type: 'd', val: 4 }
-], amendments).then((result) => {
+]
+
+console.log(transactions)
+calculate(transactions, amendments).then((result) => {
   console.log(result)
 })
