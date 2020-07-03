@@ -1,21 +1,21 @@
-const add = (x, y) => x + y
+const add = async (x, y) => x + y
 
 const report = (result) => {
   console.log(`The result was ${result}`)
 }
 
-const calculate = () => {
-  const a = add(10, 20)
+const calculate = async () => {
+  const a = await add(10, 20)
   report(a)
 
-  const b = add(11, 22)
+  const b = await add(11, 22)
   report(b)
 
-  const c = add(a, b)
+  const c = await add(a, b)
   report(c)
 
   return c
 }
 
-const total = calculate()
-console.log(`*** The final total is: ${total}`)
+calculate()
+  .then(total => console.log(`*** The final total is: ${total}`))

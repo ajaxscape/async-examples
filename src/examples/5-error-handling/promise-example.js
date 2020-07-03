@@ -9,11 +9,11 @@ const getData = (error) => {
         console.log(data)
         return data
       })
-      .catch((err) => {
-        // handle asynchronous errors
-        console.log(err)
-        return Promise.reject(err)
-      })
+      // .catch((err) => {
+      //   // handle asynchronous errors
+      //   console.log(err)
+      //   return Promise.reject(err)
+      // })
   } catch (err) {
     console.log(err)
     return Promise.reject(err)
