@@ -89,3 +89,7 @@ const add = async (x, y) => x + y
 ```
 
 Remember that the async keyword indicates that whatever the function returns it will be within a promise, hence dealing with results returned from an async function is called is the same way you deal with any function returning a promise.
+
+Notice that the code using async and await syntax is almost the same as the original code.  Only the addition of the async and await keywords are the difference.  The functionality however, is identical to the code using promises.
+
+This clearly shows that by using the async and await syntax, it is now possible to write asynchronous code using synchronous code structure.  This prevents compromising the readability and therefore maintainability of code when converting it to run asynchronously.
