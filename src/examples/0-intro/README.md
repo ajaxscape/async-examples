@@ -26,7 +26,7 @@ const total = calculate()
 console.log(`*** The final total is: ${total}`)
 ```
 
-If the "add" function is converted to be an asynchronous function, the "calculate" function, and the code calling that function will need to be converted to use promises as follows:
+If the "add" function is converted to be an asynchronous function, the "calculate" function, and the code calling that function will need to be converted to use promises and will involve using the then function of the returned promises in a nested manner as follows:
 ```js
 const add = (x, y) => Promise.resolve(x + y)
 
