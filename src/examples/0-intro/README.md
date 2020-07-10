@@ -26,7 +26,7 @@ const total = calculate()
 console.log(`*** The final total is: ${total}`)
 ```
 
-If the "add" function is converted to be an asynchronous function, the "calculate" function, and the code calling that function will need to be converted to use promises and will involve using the then function of the returned promises in a nested manner as follows:
+If the "add" function is asynchronous, the "calculate" function will involve nested promises as follows:
 ```js
 const add = (x, y) => Promise.resolve(x + y)
 
@@ -56,7 +56,7 @@ calculate()
   })
 ```
 
-If instead with async and await syntax, the following can be done:
+If using async and await syntax, the following code can be written instead:
 ```js
 const add = (x, y) => Promise.resolve(x + y)
 
@@ -83,12 +83,10 @@ calculate()
   })
 ```
 
-Please note that even the "add" function could be changed to:
+Even the "add" function could be changed to:
 ```js
 const add = async (x, y) => x + y
 ```
-
-Remember that the async keyword indicates that whatever the function returns it will be within a promise, hence dealing with results returned from an async function is called is the same way you deal with any function returning a promise.
 
 Notice that the code using async and await syntax is almost the same as the original code.  Only the addition of the async and await keywords are the difference.  The functionality however, is identical to the code using promises.
 
