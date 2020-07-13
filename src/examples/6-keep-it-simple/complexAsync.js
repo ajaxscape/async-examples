@@ -7,7 +7,7 @@ const amendments = [
   { type: 'c', adjustment: -5 }
 ]
 
-const pipe = (...fns) => async (x, ...y) => fns.reduce(async (v, f) => f(await v, ...y), Promise.resolve(x))
+const pipe = (...fns) => async (x, ...y) => fns.reduce(async (v, f) => f(await v, ...y), x)
 
 const calculate = async (transactions) => {
   transactions = await pipe(...pipeLine)(transactions, amendments)
