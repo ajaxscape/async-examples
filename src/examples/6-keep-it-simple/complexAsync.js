@@ -1,4 +1,4 @@
-const { pipeLineFunc } = require('./helper')
+const { pipeLineFunc } = require('./helper-promises')
 
 const pipeLine = [pipeLineFunc, pipeLineFunc, pipeLineFunc, pipeLineFunc]
 
@@ -7,11 +7,10 @@ const amendments = [
   { type: 'c', adjustment: -5 }
 ]
 
-const calculate = async (transactions, amendments) => {
-  transactions = await pipeLine.reduce(async (transactionsPromise, pipeLineFunction) => {
-    return pipeLineFunction(await transactionsPromise, amendments)
-  }, Promise.resolve(transactions))
+const pipe = (...fns) => async (x, ...y) => fns.reduce(async (v, f) => f(await v, ...y), Promise.resolve(x))
 
+const calculate = async (transactions) => {
+  transactions = await pipe(...pipeLine)(transactions, amendments)
   return transactions.map((trans) => ({ ...trans, complete: true }))
 }
 
