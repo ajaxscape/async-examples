@@ -7,11 +7,16 @@ const amendments = [
   { type: 'c', adjustment: -5 }
 ]
 
-const calculate = async (transactions, amendments) => {
-  for (let index = 0; index < pipeLine.length; index++) {
-    const pipeLineFunction = pipeLine[index]
-    transactions = await pipeLineFunction(transactions, amendments)
+const processPipeline = async (callback) => {
+  for (let [fn, ...fns] = pipeLine; fn !== undefined; fn = fns.shift()) {
+    await callback(fn)
   }
+}
+
+const calculate = async (transactions, amendments) => {
+  await processPipeline(async (fn) => {
+    transactions = await fn(transactions, amendments)
+  })
 
   return transactions.map((trans) => ({ ...trans, complete: true }))
 }

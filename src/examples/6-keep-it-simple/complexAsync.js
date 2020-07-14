@@ -7,12 +7,7 @@ const amendments = [
   { type: 'c', adjustment: -5 }
 ]
 
-const pipe = (...fns) => async (x, ...y) => fns.reduce(async (v, f) => f(await v, ...y), x)
-
-const calculate = async (transactions) => {
-  transactions = await pipe(...pipeLine)(transactions, amendments)
-  return transactions.map((trans) => ({ ...trans, complete: true }))
-}
+const pipe = (fns) => async (collection, ...config) => fns.reduce(async (v, f) => f(await v, ...config), collection)
 
 const transactions = [
   { type: 'a', val: 1 },
@@ -22,6 +17,10 @@ const transactions = [
 ]
 
 console.log(transactions)
-calculate(transactions, amendments).then((result) => {
-  console.log(result)
-})
+
+const calculate = pipe([
+  ...pipeLine,
+  (transactions) => transactions.map((transaction) => ({ ...transaction, complete: true }))
+])
+
+calculate(transactions, amendments).then((result) => console.log(result))
